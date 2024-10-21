@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!--1. 設定Google 字型的Link -->
+    <link href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&display=swap" rel="stylesheet">
+    <link
+        href="https://fonts.googleapis.com/css2?family=Charm:wght@400;700&family=Coda:wght@400;800&family=Sixtyfour+Convergence&display=swap"
+        rel="stylesheet">
+
+    <style>
+        :root {
+            font-size: 16px;
+        }
+
+        body {
+            /* 對整份文件的字型設定 */
+            font-family: 'Times New Roman', Times, serif;
+            font-optical-sizing: auto;
+            font-weight: 400;
+
+        }
+
+        /* 對局部文字做設定 */
+        .font-style {
+            /* 單位可以是px, rem, em */
+            font-size: 50px;
+            /* 設定斜體 */
+            font-style: italic;
+            /* 設定粗體 100~900, bold.. */
+            font-weight: bolder;
+            /* 字型家族 */
+            /* 如果使用者的系統有第一個字型就使用,沒有就用第二個 */
+            font-family: '微軟正黑體', Verdana, Geneva, Tahoma, sans-serif;
+
+        }
+
+        /* 2.設定google字型的font-family */
+        .google-font {
+            font-family: "Charm", cursive;
+            font-weight: 700;
+            font-style: normal;
+        }
+
+        .text-style {
+            font-size: 50px;
+            /* 文字對齊 */
+            text-align: left;
+            /* underline ,  */
+            text-decoration: underline;
+            /* 第一行文字縮排 */
+            text-indent: 100px;
+            /* 中文字或英文字母的間隔 */
+            letter-spacing: 30px;
+            /* 單字間的間隔,中文字比較難用到此屬性(字與字沒也空格) */
+            word-spacing: 20px;
+            /* 行高,可以設定單位值 */
+            line-height: 50px;
+            /* 行高,可以設定倍數(無單位值) */
+            line-height: 3;
+        }
+
+        .text-shadow {
+            font-size: 100px;
+
+            /* 水平位移(+為右, -為左), 垂直位移(+為下,-為上), 模糊半徑, 顏色 */
+            /* 多重陰影, 組跟組織間用,隔開! */
+            text-shadow:
+                100px 20px 5px rgba(128, 128, 0, 0.5),
+                4px 4px 25px rgba(0, 0, 0, 0.81);
+        }
+
+        /* CSS generator產生器, 可以先在產生器知道外觀,覺得喜歡就copy code & paste to VS-code  */
+    </style>
+</head>
+
+<body>
+    <!-- 
+    10進位 0~9
+    32 => 2*1(個位數) + 10*3(十位數) =ˇ32
+
+    16進位 0~9 A(10), B(11), ~F(15)
+    1A => 10*1(個位數) +  16*1 = 26
+FF => 255 15*1 + 15*16 = 255
+
+    -->
+    <h1>1.Font 樣式設定</h1>
+    <div class="font-style">
+        星期五 Lorem ipsum
+    </div>
+
+    <h2>2.Google Font</h2>
+    <div class="google font">
+        Lorem ipsum123
+    </div>
+    <h3>3.text樣式設定</h3>
+    <p class="text-style">
+        Lorem is summer now , hahah
+    </p>
+
+    <h2>4.文字陰影</h2>
+    <p class="text-shadow">PHP is the best!</p>
+
+    <h2>5.rem與em差異</h2>
+
+    <h3>rem</h3>
+    <p>root為預設font-size的倍數,預設為16px,以root為準!</p>
+    <p>:root 選擇器, 指的是根元素 html</p>
+    <div style="font-size: 1rem;">
+        font
+        <div style="font-size: 2rem;">
+            font
+            <div style="font-size: 3rem;">font</div>
+        </div>
+    </div>
+    <!-- em -->
+    <h3>em</h3>
+    <p>可能為父層或祖先層(root) font-size的倍數</p>
+    <p>父層若有設定文字尺寸以他為準,沒有則會一層一層往外找!</p>
+    <div style="font-size:1em;">
+        font
+        <div style="font-size: 2em;">
+            font
+            <div style="font-size: 3em;">font</div>
+        </div>
+    </div>
+
+    </div>
+</body>
+
+</html>

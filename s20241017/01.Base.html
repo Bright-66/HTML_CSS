@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS 基本設定</title>
+
+    <!-- 第二種方式使用外部樣式表群組"Link" , 適合用於開發網站! -->
+    <link rel="stylesheet" href="./style1.css">
+
+    <!-- 1st kind 使用 style標籤樣式, 該文件的專屬樣式, 適合用於自己練習用!  -->
+    <style>
+        /* 選擇棄 {
+        屬性: 值
+        ...
+        } 
+        */
+        /* 標籤選族企 */
+        h1 {
+            color: red;
+            background-color: yellow;
+
+        }
+
+        p {
+            font-size: 50px;
+            color: green;
+        }
+
+        /* 群組選擇器 */
+        /* h1的顏色被覆蓋(執行由上到下掃描), 由紅變藍! */
+        h1,
+        h2,
+        h3,
+        h4,
+        h5,
+        h6 {
+            color: blue;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- 第三種方式 "行內樣式(inline style)", 標籤的專屬樣式,優先等級最高! -->
+    <h1 style="color: deeppink">title1</h1>
+
+    <!-- Lorem 假字 , Lorem +數字數 -->
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, vel. Excepturi ipsam neque odit magni nam
+        sit modi eveniet provident praesentium quasi iste, tempore animi facere error ab quisquam dolorum.</p>
+
+    <h1>title2</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, vel. Excepturi ipsam neque odit magni nam
+        sit modi eveniet provident praesentium quasi iste, tempore animi facere error ab quisquam dolorum.</p>
+
+    <h1>title3</h1>
+    <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Perferendis, vel. Excepturi ipsam neque odit magni nam
+        sit modi eveniet provident praesentium quasi iste, tempore animi facere error ab quisquam dolorum.</p>
+
+    <hr>
+    <!-- 水平區隔橫線 -->
+
+    <h1>hello world</h1>
+    <h2>hello world</h2>
+    <h3>hello world</h3>
+    <h4>hello world</h4>
+    <h5>hello world</h5>
+    <h6>hello world</h6>
+
+
+</body>
+
+</html>

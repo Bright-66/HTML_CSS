@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* # 表id , .表class */
+        #vw {
+            width: 50vw;
+            /* 100vw = 全滿 */
+            height: 100px;
+            background: gray;
+            font-size: 100px;
+            text-align: center;
+            color: aquamarine;
+        }
+
+        #vh {
+            width: 50vh;
+            /* 100vw = 全滿 */
+            height: 100px;
+            background: lightpink;
+            font-size: 100px;
+            text-align: right;
+            color: blue;
+        }
+
+        #vmax {
+            /* vax = 視窗的寬或高較大的那一個, 會隨瀏覽器縮放而變! 
+            100vmax = 全滿
+            */
+            width: 50vmax;
+            height: 100px;
+            background: lightpink;
+            font-size: 100px;
+            text-align: right;
+            color: blue;
+        }
+
+        #out {
+            width: 300px;
+            height: 300px;
+            background-color: orange;
+        }
+
+        #in {
+            /* % = 依照"外層元素大小"的百分比, 此"in"為依"out"的大小來計算%, 若無out 則會依更上層的數值計算!  */
+            /* 外層必須設定有高度值, 內層的 % 才有效! */
+            /* calc 不同單位的計算, 四則運算符號前後都要有空白! */
+            width: calc(50% + 30px);
+            height: 50%;
+            background-color: black;
+        }
+
+        #vmin {
+            /* vimn = 視窗的寬或高較小的那一個, 會隨瀏覽器縮放而變! 
+             100vmin = 全滿
+            */
+            width: 50vmin;
+            /* 100 = 全滿 */
+            height: 100px;
+            background: gray;
+            font-size: 100px;
+            text-align: right;
+            color: purple;
+        }
+    </style>
+</head>
+
+<body>
+    <!-- vw=>視窗的寬度(view width) -->
+    <!-- vh=>視窗的高度(view height) -->
+    <div id="vw">vw</div>
+    <div id="vh">vh</div>
+    <div id="vmin">vmin</div>
+    <div id="vmax">vmax</div>
+    <div id="out">
+        <div id="in"></div>
+    </div>
+</body>
+
+</html>

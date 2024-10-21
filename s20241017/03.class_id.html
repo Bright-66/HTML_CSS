@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* class的寫法
+        1. .class-name
+        2. 命名不可用數字開頭, ex:.123abs ,但 .abc123 是合法的!
+        3. 有區分大小寫, mycolor與MyColor 是不同的
+        4. 可以用中文命名但不建議!
+        */
+
+        .mycoloy {
+            color: deepskyblue;
+        }
+
+        /* 劃三個盒子相同寬高的盒子, 但三個盒子的背景顏色不同 */
+        .box {
+            width: 300px;
+            height: 300px;
+        }
+
+        .bg-color1 {
+            background-color: aqua;
+        }
+
+        .bg-color2 {
+            background-color: blueviolet;
+        }
+
+        .bg-color3 {
+            background-color: chartreuse;
+        }
+
+
+        #left {
+            width: 1024px;
+            height: 800px;
+            background: lightblue;
+            float: right;
+            /* 浮動右側 */
+        }
+
+        #footer {
+            width: 1024px;
+            height: 800px;
+            background: lemonchiffon;
+            clear: both;
+            /* 清除浮動 */
+
+        }
+
+        /* 主流排版display:fLxe 彈性盒 fLexbox */
+
+        /* 後代選擇器 (後代全部都是,子.孫...) */
+        nav p {
+            color: blue;
+        }
+
+        /* 子代選擇器 (只有子代) */
+        nav>p {
+            color: brown;
+
+        }
+
+        .menu>.list-item {
+            color: purple;
+            font-size: 30px;
+        }
+
+        ul>li {
+            color: red;
+
+        }
+    </style>
+
+</head>
+
+<body>
+    <!-- class 與 id 選族器 -->
+    <h1>CSS的選擇棄</h1>
+    <p>CSS 有非常多選擇器.幫助我們在鑽寫樣式時,依照該情境選擇到我們要的目標
+
+    <h1 class="mycolor">class選擇器</h1>
+    <p class="mycolor">特性1: 舉有重複使用的特性,是使用率最高的選擇器</p>
+    <a class="mycolor" href="#">超連結
+
+        <p>特性2:</p>
+        <p>抽離相同的屬性寫成class重複使用,再對不一樣的屬性定義class</p>
+        <p>class屬性是可以一值增加, 例如 box bg-color1</p>
+        <!-- emmet 打法  .box -->
+        <dir class="box bg-color1"></dir>
+        <br>
+        <dir class="box bg-color2"></dir>
+        <br>
+        <dir class="box bg-color3"></dir>
+
+
+        <h1>id 選擇器</h1>
+        <p>一份文件裡面, 只允許一個獨一無二的id</p>
+        <p>對元素(標籤)設定id,可以用程式快速取得他</p>
+
+        <h2>網頁區塊名稱會用id來命名</h2>
+        <!-- 大容器main 包覆4個小容器header/left/right/footer  -->
+        <div id="main">
+            <div id="header"></div>
+            <div id="left"></div>
+            <div id="right"></div>
+            <div id="footer"></div>
+        </div>
+
+        <h2>對元素(標籤)設定id</h2>
+        <button id="btn">按鈕</button>
+
+        <hr>
+        <h1>後代選擇器與子代選擇器</h1>
+        <nav>
+            <p>Lorem ipsum dolor sit amet</p>
+            <div>
+                <p>Lorem ipsum dolor sit amet</p>
+
+            </div>
+        </nav>
+
+        <hr>
+        <!-- ul>li*5 -->
+        <ul class="menu">
+            <li class="list-item">item</li>
+            <li class="list-item">item</li>
+            <li class="list-item">item</li>
+            <li class="list-item">item</li>
+            <li class="list-item">item</li>
+        </ul>
+        <ul>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+            <li>item</li>
+        </ul>
+
+        <!-- table>tr*3>td*4 -->
+        <!-- table>tr*3>td{item$}*4 -->
+        <table>
+            <!-- row -->
+            <tr>
+                <!-- td(欄) -->
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <!-- row -->
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+            <!-- row -->
+            <tr>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td></td>
+            </tr>
+        </table>
+
+        <table>
+            <tr>
+                <td>item1</td>
+                <td>item2</td>
+                <td>item3</td>
+                <td>item4</td>
+            </tr>
+            <tr>
+                <td>item1</td>
+                <td>item2</td>
+                <td>item3</td>
+                <td>item4</td>
+            </tr>
+            <tr>
+                <td>item1</td>
+                <td>item2</td>
+                <td>item3</td>
+                <td>item4</td>
+            </tr>
+        </table>
+
+        <script>
+            // 用程式取得 id
+            const btn = document.getElementById('btn')
+            // 讓按鈕被點擊時 ,跳出視窗(alert)
+            btn.onclick = function () {
+                alert('Hello World')
+            }
+        </script>
+
+
+</body>
+
+</html>
