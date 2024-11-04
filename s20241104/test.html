@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>機器人</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f0f0;
+        }
+
+        .robot {
+            width: 200px;
+            height: 400px;
+            position: relative;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        .head {
+            width: 70px;
+            height: 60px;
+            background-color: blue;
+            border-radius: 5px;
+            border: 2px solid black;
+            margin-bottom: 10px;
+        }
+
+        .eyes {
+            display: flex;
+            justify-content: space-around;
+            margin-top: 10px;
+        }
+
+        .eye {
+            width: 10px;
+            height: 10px;
+            background-color: white;
+            border-radius: 50%;
+            border: 2px solid black;
+        }
+
+        .body {
+            width: 180px;
+            height: 250px;
+            background-color: green;
+            border-radius: 0 0 10px 10px;
+            border: 2px solid black;
+            margin-bottom: 5px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 80px;
+            font-family: Cambria, Cochin, Georgia, Times, 'Times New Roman', serif;
+            color: gold;
+            position: relative;
+            /* 使手臂相對於身體定位 */
+        }
+
+        .arms {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            position: absolute;
+            top: -30px;
+            /* 調整手臂位置 */
+        }
+
+        .arm {
+            width: 40px;
+            height: 100px;
+            background-color: #ffeb3b;
+            border: 2px solid black;
+            border-radius: 5px;
+        }
+
+        .legs {
+            display: flex;
+            height: 60px;
+            justify-content: space-between;
+            width: 150px;
+            position: absolute;
+            bottom: 0;
+        }
+
+        .leg {
+            width: 50px;
+            height: 60px;
+            background-color: red;
+            border-radius: 0 0 10px 10px;
+            border: 2px solid black;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="robot">
+        <div class="head">
+            <div class="eyes">
+                <div class="eye"></div>
+                <div class="eye"></div>
+            </div>
+        </div>
+        <div class="arms">
+            <div class="arm"></div>
+            <div class="arm"></div>
+        </div>
+        <div class="body">10</div>
+        <div class="legs">
+            <div class="leg"></div>
+            <div class="leg"></div>
+        </div>
+    </div>
+</body>
+
+</html>
