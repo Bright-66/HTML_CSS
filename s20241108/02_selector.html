@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        /* 後代的下一層而已 */
+        div>p {
+            background-color: blanchedalmond;
+        }
+
+        /* 後代選擇器-全部後代 (少用) */
+        div p {
+            background-color: chartreuse;
+        }
+
+        /* 同輩選擇器-相鄰同輩 (少用) */
+        div+p {
+            background-color: coral;
+        }
+
+        div~p {
+            background-color: burlywood;
+        }
+    </style>
+</head>
+
+<body>
+    <h3>Combinators selectors</h3>
+    <!-- id -->
+
+    <!-- w3schools -->
+    <div>
+        <p>p1 lorem</p>
+        <p>p2 lorem</p>
+        <main>
+            <p>p3 lorem</p>
+        </main>
+        <p>
+            p4 lorem
+        </p>
+    </div>
+    <p>p5 lorem</p>
+    <p>p6 lorem</p>
+
+</body>
+
+</html>
