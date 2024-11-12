@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Comebuy menu</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #f1c40f;
+            color: #fff;
+            padding: 20px;
+            font-size: xx-large;
+            text-align: center;
+        }
+
+        .menu {
+            padding: 40px;
+            max-width: 900px;
+            margin: 0 auto;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .menu-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 20px;
+            border-bottom: 1px solid #ddd;
+            padding-bottom: 20px;
+        }
+
+        .menu-item img {
+            width: 100px;
+            height: 120px;
+            border-radius: 8px;
+        }
+
+        .item-details {
+            flex-grow: 1;
+            margin-left: 20px;
+            text-align: left;
+        }
+
+        .item-details h3 {
+            margin: 0;
+            color: #333;
+        }
+
+        .item-details .price {
+            font-weight: bold;
+            color: #e74c3c;
+        }
+
+        .quantity input {
+            padding: 3px;
+            width: 40px;
+            text-align: center;
+        }
+
+        .total {
+            margin-left: 20px;
+            color: red;
+            font-weight: bolder;
+        }
+
+        .total-price {
+            font-size: 30px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 30px;
+            text-align: right;
+        }
+
+        .menu-item div {
+            text-align: center;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>Combuy menu</h1>
+    </header>
+
+    <div class="menu">
+
+        <div class="menu-item">
+            <img src="./1.png" alt="海神">
+            <div class="item-details">
+                <h3>海神</h3>
+                <p class="price">$40</p>
+            </div>
+            <div class="quantity">
+                <label for="sea-qty">數量：</label>
+                <input type="number" id="sea-qty" min="0" value="0">
+            </div>
+            <div class="total">
+                <p>總價：<span id="sea-total">$0</span></p>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="./2.png" alt="屋瓦紅茶拿鐵">
+            <div class="item-details">
+                <h3>屋瓦紅茶拿鐵</h3>
+                <p class="price">$60</p>
+            </div>
+            <div class="quantity">
+                <label for="latte-qty">數量：</label>
+                <input type="number" id="latte-qty" min="0" value="0">
+            </div>
+            <div class="total">
+                <p>總價：<span id="latte-total">$0</span></p>
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <img src="./3.png" alt="屋瓦紅茶">
+            <div class="item-details">
+                <h3>屋瓦紅茶</h3>
+                <p class="price">$30</p>
+            </div>
+            <div class="quantity">
+                <label for="tea-qty">數量：</label>
+                <input type="number" id="tea-qty" min="0" value="0">
+            </div>
+            <div class="total">
+                <p>總價：<span id="tea-total">$0</span></p>
+            </div>
+        </div>
+
+        <div class="total-price">
+            <p>總價：<span id="final-total">$0</span></p>
+        </div>
+    </div>
+
+    <script>
+        // 更新每個產品的總價
+        function updateTotalPrice() {
+            const seaPrice = 40;
+            const lattePrice = 60;
+            const teaPrice = 30;
+
+            const seaQty = parseInt(document.getElementById('sea-qty').value) || 0;
+            const latteQty = parseInt(document.getElementById('latte-qty').value) || 0;
+            const teaQty = parseInt(document.getElementById('tea-qty').value) || 0;
+
+            // 計算每個產品的總價
+            const seaTotal = seaPrice * seaQty;
+            const latteTotal = lattePrice * latteQty;
+            const teaTotal = teaPrice * teaQty;
+
+            // 顯示每個產品的總價
+            document.getElementById('sea-total').textContent = `$${seaTotal}`;
+            document.getElementById('latte-total').textContent = `$${latteTotal}`;
+            document.getElementById('tea-total').textContent = `$${teaTotal}`;
+
+            // 計算和顯示最終總價
+            const finalTotal = seaTotal + latteTotal + teaTotal;
+            document.getElementById('final-total').textContent = `$${finalTotal}`;
+        }
+
+        // 監聽所有的數量輸入框
+        document.getElementById('sea-qty').addEventListener('input', updateTotalPrice);
+        document.getElementById('latte-qty').addEventListener('input', updateTotalPrice);
+        document.getElementById('tea-qty').addEventListener('input', updateTotalPrice);
+
+        // 頁面載入時初始化總價
+        updateTotalPrice();
+    </script>
+
+</body>
+
+</html>

@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>麥當勞菜單</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f8f8f8;
+            margin: 0;
+            padding: 0;
+            text-align: center;
+        }
+
+        header {
+            background-color: #f1c40f;
+            color: #fff;
+            padding: 20px;
+        }
+
+        .menu-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
+            padding: 40px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .menu-item {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            padding: 20px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            text-align: center;
+        }
+
+        .menu-item h3 {
+            margin-top: 0;
+            color: #333;
+        }
+
+        .price {
+            font-weight: bold;
+            color: #e74c3c;
+            font-size: 18px;
+        }
+
+        .quantity input {
+            padding: 5px;
+            width: 60px;
+            text-align: center;
+        }
+
+        .total-price {
+            font-size: 20px;
+            font-weight: bold;
+            color: #27ae60;
+            margin-top: 30px;
+        }
+
+        .grid-header {
+            font-size: 18px;
+            font-weight: bold;
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <header>
+        <h1>麥當勞菜單</h1>
+    </header>
+
+    <div class="menu-container">
+        <div class="menu-item">
+            <h3>巨無霸</h3>
+            <p class="price">$180</p>
+            <div class="quantity">
+                <label for="burger-qty">數量：</label>
+                <input type="number" id="burger-qty" min="0" value="0">
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <h3>薯條</h3>
+            <p class="price">$50</p>
+            <div class="quantity">
+                <label for="fries-qty">數量：</label>
+                <input type="number" id="fries-qty" min="0" value="0">
+            </div>
+        </div>
+
+        <div class="menu-item">
+            <h3>可樂</h3>
+            <p class="price">$40</p>
+            <div class="quantity">
+                <label for="drink-qty">數量：</label>
+                <input type="number" id="drink-qty" min="0" value="0">
+            </div>
+        </div>
+    </div>
+
+    <div class="total-price">
+        <p>總價：<span id="total-price">$0</span></p>
+    </div>
+
+    <script>
+        // 更新總價的函式
+        function updateTotalPrice() {
+            // 定義每個品項的單價
+            const burgerPrice = 180;
+            const friesPrice = 50;
+            const drinkPrice = 40;
+
+            // 取得使用者輸入的數量
+            const burgerQty = parseInt(document.getElementById('burger-qty').value) || 0;
+            const friesQty = parseInt(document.getElementById('fries-qty').value) || 0;
+            const drinkQty = parseInt(document.getElementById('drink-qty').value) || 0;
+
+            // 計算總價
+            const total = (burgerPrice * burgerQty) + (friesPrice * friesQty) + (drinkPrice * drinkQty);
+
+            // 顯示總價
+            document.getElementById('total-price').textContent = `$${total}`;
+        }
+
+        // 監聽數量變更，並更新總價
+        document.getElementById('burger-qty').addEventListener('input', updateTotalPrice);
+        document.getElementById('fries-qty').addEventListener('input', updateTotalPrice);
+        document.getElementById('drink-qty').addEventListener('input', updateTotalPrice);
+    </script>
+
+</body>
+
+</html>
