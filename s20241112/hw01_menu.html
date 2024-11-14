@@ -18,7 +18,7 @@
             background-color: #f1c40f;
             color: #fff;
             padding: 20px;
-            font-size: xx-large;
+            font-size: 50px;
             text-align: center;
         }
 
@@ -40,8 +40,8 @@
         }
 
         .menu-item img {
-            width: 100px;
-            height: 120px;
+            width: 120px;
+            height: 150px;
             border-radius: 8px;
         }
 
@@ -53,28 +53,38 @@
 
         .item-details h3 {
             margin: 0;
+            font-weight: bold;
+            font-size: 25px;
             color: #333;
         }
 
         .item-details .price {
             font-weight: bold;
+            font-size: 20px;
             color: #e74c3c;
+        }
+
+        .quantity {
+            font-size: 20px;
+
         }
 
         .quantity input {
             padding: 3px;
-            width: 40px;
+            width: 50px;
+            font-size: 18px;
             text-align: center;
         }
 
         .total {
             margin-left: 20px;
             color: red;
+            font-size: 22px;
             font-weight: bolder;
         }
 
         .total-price {
-            font-size: 30px;
+            font-size: 50px;
             font-weight: bold;
             color: #27ae60;
             margin-top: 30px;
@@ -90,7 +100,7 @@
 <body>
 
     <header>
-        <h1>Combuy menu</h1>
+        <h1>Comebuy Tea</h1>
     </header>
 
     <div class="menu">
@@ -99,7 +109,7 @@
             <img src="./1.png" alt="海神">
             <div class="item-details">
                 <h3>海神</h3>
-                <p class="price">$40</p>
+                <p class="price">單價 $40</p>
             </div>
             <div class="quantity">
                 <label for="sea-qty">數量：</label>
@@ -114,7 +124,7 @@
             <img src="./2.png" alt="屋瓦紅茶拿鐵">
             <div class="item-details">
                 <h3>屋瓦紅茶拿鐵</h3>
-                <p class="price">$60</p>
+                <p class="price">單價 $60</p>
             </div>
             <div class="quantity">
                 <label for="latte-qty">數量：</label>
@@ -129,7 +139,7 @@
             <img src="./3.png" alt="屋瓦紅茶">
             <div class="item-details">
                 <h3>屋瓦紅茶</h3>
-                <p class="price">$30</p>
+                <p class="price">單價 $30</p>
             </div>
             <div class="quantity">
                 <label for="tea-qty">數量：</label>
@@ -139,7 +149,7 @@
                 <p>總價：<span id="tea-total">$0</span></p>
             </div>
         </div>
-
+        <hr>
         <div class="total-price">
             <p>總價：<span id="final-total">$0</span></p>
         </div>
