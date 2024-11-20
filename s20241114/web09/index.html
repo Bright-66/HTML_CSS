@@ -7,50 +7,6 @@
     <title>國立科技高中-校園社團介紹網</title>
     <link rel="stylesheet" href="./css/style.css">
 
-    <style>
-        img {
-            text-align: center;
-        }
-
-        .aside-header {
-            font-family: '標楷體';
-            font-weight: 500;
-            font-size: 24px;
-            text-align: center;
-            padding: 10px;
-            color: #ff00ff;
-        }
-
-        .menu {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-        }
-
-        .menu-item {
-            margin-top: 20px;
-            background-color: lightblue;
-            /* 查看圖檔的size */
-            width: 200px;
-            height: 35px;
-            background-image: url(./images/menu1.png);
-            border-radius: 50px;
-            padding-top: 10px;
-            color: #000000;
-            font-size: 16px;
-        }
-
-        .menu-item:hover {
-            background-image: url(./images/menu2.png);
-        }
-
-        #aside-title {
-            /* background-color: lightblue; */
-            padding: 20px;
-        }
-    </style>
-
 </head>
 
 <body>
@@ -89,7 +45,9 @@
                 </div>
             </div>
 
-            <div class="aside-footer">最近更新日期:2024/11/20</div>
+            <div class="aside-footer">
+                最近更新日期:2024/11/20
+            </div>
         </aside>
 
         <!-- 2-2.right main 內容區-->
@@ -99,7 +57,13 @@
                     歡迎光臨校園社團介紹網，參觀後請支持社團活動並熱烈參與
                 </marquee>
             </div>
-            <div class="main-footer">main-footer</div>
+            <div class="main-footer">
+                <!-- attr , name="myIframe" -->
+                <iframe src="./main.html" frameborder="0" name="myIframe">
+
+                </iframe>
+
+            </div>
         </main>
     </div>
 
