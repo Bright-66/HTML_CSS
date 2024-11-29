@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>商品特價顯示</title>
+    <style>
+        .container {
+            display: flex;
+            justify-content: space-evenly;
+            align-items: center;
+            margin-top: 50px;
+        }
+
+        .product {
+            text-align: center;
+            width: 300px;
+            cursor: pointer;
+        }
+
+        .product img {
+            width: 100%;
+            height: auto;
+            border: 8px solid gold;
+            border-radius: 30px;
+        }
+
+        .original-price {
+            font-size: 18px;
+            color: #555;
+        }
+
+        .original-price:hover {
+            font-size: 25px;
+            color: blue;
+            text-decoration: line-through;
+        }
+
+        .discount-price {
+            font-size: 25px;
+            font-weight: bold;
+            color: red;
+            margin-top: 10px;
+            display: none;
+            background-color: lightgreen;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="container">
+        <div class="product" id="product1" data-discount-price="26000">
+            <h2>Apple手機</h2>
+            <img src="./image/apple.jpg" alt="">
+            <div class="original-price">【Apple】原價: $38000</div>
+            <div class="discount-price">【Apple】特價: $26000</div>
+        </div>
+
+        <div class="product" id="product2" data-discount-price="22000">
+            <h2>Sony手機</h2>
+            <img src="./image/Sony.jpg" alt="">
+            <div class="original-price">【Sony】原價: $30000</div>
+            <div class="discount-price">【Sony】特價: $22000</div>
+        </div>
+
+        <div class="product" id="product3" data-discount-price="15000">
+            <h2>Asus手機</h2>
+            <img src="./image/asus.png" alt="">
+            <div class="original-price">【Asus】原價: $20000</div>
+            <div class="discount-price">【Asus】特價: $15000</div>
+        </div>
+    </div>
+
+    <!-- 引入 jQuery -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
+        integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+    <script>
+        $(document).ready(function () {
+            // 當用戶點擊商品區塊時
+            $('.product').click(function () {
+                let $product = $(this); // 取得被點擊的商品區塊
+                $product.find('.original-price').hide(); // 隱藏原價
+                $product.find('.discount-price').show(); // 顯示特價
+            });
+        });
+    </script>
+
+</body>
+
+</html>
