@@ -23,6 +23,11 @@
         tr:nth-child(even) {
             /* background-color: #dddddd; */
         }
+
+        .text-red {
+            color: red;
+            font-size: 30px;
+        }
     </style>
 </head>
 
@@ -127,15 +132,10 @@
                 <p id="sumResult">
                     0 元
                 </p>
-
             </td>
         </tr>
-
     </table>
-
     <hr>
-
-
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -153,9 +153,27 @@
 
                 let sum = getTotal1Value + getTotal2Value + getTotal3Value;
                 console.log('getSum', sum);
+
+                // >200: 打8折 ; Other: 原價!
+                // if (sum >= 200) {
+                //     sumResult = sum * 0.8;
+                //     let resultString = `${sum} 元`;
+                //     sumResult.text(resultString);
+                // } else {
+                //     let resultString = `${sum} 元`;
+                //     sumResult.text(resultString);
+                // }
+
+                // 重構
+                if (sum >= 200) {
+                    sum = sum * 0.8;
+                    sumResult.attr('class', 'text-red');
+                } else {
+                    sumResult.attr('class', '');
+                    // sumResult.removeClass('text-red');
+                }
                 let resultString = `${sum} 元`;
                 sumResult.text(resultString);
-
             }
 
             // 1.bind
