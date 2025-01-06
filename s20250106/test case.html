@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>簡單 Modal 範例</title>
+    <style>
+        /* Modal 背景 */
+        .modal {
+            display: none;
+            /* 隱藏 modal */
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgb(0, 0, 0);
+            background-color: rgba(0, 0, 0, 0.4);
+            /* 黑色背景 */
+        }
+
+        /* Modal 內容 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 15% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 300px;
+        }
+
+        /* 按鈕 */
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .cancel-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .confirm-btn {
+            background-color: green;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- 觸發按鈕 -->
+    <button id="deleteBtn" class="button">刪除項目</button>
+
+    <!-- Modal 結構 -->
+    <div id="myModal" class="modal">
+        <div class="modal-content">
+            <h2>您確定要刪除這個項目嗎？</h2>
+            <button class="button cancel-btn" id="cancelBtn">取消</button>
+            <button class="button confirm-btn" id="confirmBtn">確認</button>
+        </div>
+    </div>
+
+    <script>
+        // 獲取元素
+        const modal = document.getElementById("myModal");
+        const deleteBtn = document.getElementById("deleteBtn");
+        const cancelBtn = document.getElementById("cancelBtn");
+        const confirmBtn = document.getElementById("confirmBtn");
+
+        // 點擊刪除按鈕，顯示 modal
+        deleteBtn.onclick = function () {
+            modal.style.display = "block";
+        }
+
+        // 點擊取消按鈕，隱藏 modal
+        cancelBtn.onclick = function () {
+            modal.style.display = "none";
+        }
+
+        // 點擊確認按鈕，執行刪除操作並隱藏 modal
+        confirmBtn.onclick = function () {
+            alert("項目已刪除！");
+            modal.style.display = "none";
+        }
+
+        // 點擊 modal 以外的區域，隱藏 modal
+        window.onclick = function (event) {
+            if (event.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    </script>
+
+</body>
+
+</html>

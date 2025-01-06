@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="zh">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>表格操作示範</title>
+    <style>
+        /* 基本樣式 */
+        .modal {
+            display: none;
+            position: fixed;
+            z-index: 1;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            overflow: auto;
+            background-color: rgba(0, 0, 0, 0.5);
+        }
+
+        /* Modal 內容 */
+        .modal-content {
+            background-color: #fefefe;
+            margin: 10% auto;
+            padding: 20px;
+            border: 1px solid #888;
+            width: 80%;
+            max-width: 400px;
+        }
+
+        /* 按鈕樣式 */
+        .button {
+            padding: 10px 20px;
+            margin: 10px;
+            cursor: pointer;
+        }
+
+        .cancel-btn {
+            background-color: red;
+            color: white;
+        }
+
+        .confirm-btn {
+            background-color: green;
+            color: white;
+        }
+
+        .add-btn {
+            background-color: blue;
+            color: white;
+        }
+
+        table {
+            width: 50%;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid black;
+        }
+
+        th,
+        td {
+            padding: 5px;
+            text-align: center;
+        }
+
+        .operation-btns button {
+            margin: 2px;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- "新增項目" 按鈕 -->
+    <button id="addBtn" class="button add-btn">新增</button>
+
+    <!-- 主新增 Modal -->
+    <div id="mainModal" class="modal">
+        <div class="modal-content">
+            <h2>新增</h2>
+            <form id="addForm">
+                <label for="newName">name:</label>
+                <input type="text" id="newName" name="newName" required>
+                <br><br>
+                <button type="submit" class="button confirm-btn">確認新增</button>
+                <button type="button" class="button cancel-btn" id="cancelAddBtn">取消</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 編輯 Modal -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <h2>編輯</h2>
+            <form id="editForm">
+                <input type="hidden" id="editId" name="editId">
+                <label for="editName">編輯name:</label>
+                <input type="text" id="editName" name="editName" required>
+                <br><br>
+                <button type="submit" class="button confirm-btn">保存變更</button>
+                <button type="button" class="button cancel-btn" id="cancelEditBtn">取消</button>
+            </form>
+        </div>
+    </div>
+
+    <!-- 刪除 Modal -->
+    <div id="deleteModal" class="modal">
+        <div class="modal-content">
+            <h2>確認刪除</h2>
+            <p>您確定要刪除這個項目嗎？</p>
+            <button class="button confirm-btn" id="confirmDeleteBtn">確認刪除</button>
+            <button class="button cancel-btn" id="cancelDeleteBtn">取消</button>
+        </div>
+    </div>
+
+    <!-- 顯示項目的表格 -->
+    <table id="itemsTable">
+        <thead>
+            <tr>
+                <th style="width:30px;">ID</th>
+                <th style="width: 50px;">name</th>
+                <th style="width: 50px;">operation</th>
+            </tr>
+        </thead>
+        <tbody>
+            <!-- 新增的項目會插入到這裡 -->
+        </tbody>
+    </table>
+
+    <script>
+        // 獲取 modal 元素
+        const mainModal = document.getElementById("mainModal");
+        const editModal = document.getElementById("editModal");
+        const deleteModal = document.getElementById("deleteModal");
+
+        const addBtn = document.getElementById("addBtn");
+        const cancelAddBtn = document.getElementById("cancelAddBtn");
+        const cancelEditBtn = document.getElementById("cancelEditBtn");
+        const cancelDeleteBtn = document.getElementById("cancelDeleteBtn");
+
+        const confirmDeleteBtn = document.getElementById("confirmDeleteBtn");
+        const addForm = document.getElementById("addForm");
+        const editForm = document.getElementById("editForm");
+        const itemsTable = document.getElementById("itemsTable").getElementsByTagName("tbody")[0];
+
+        let currentItem = null;
+
+        // 顯示主新增 Modal
+        addBtn.onclick = function () {
+            mainModal.style.display = "block";
+        };
+
+        // 關閉主新增 Modal
+        cancelAddBtn.onclick = function () {
+            mainModal.style.display = "none";
+        };
+
+        // 當新增表單提交時
+        addForm.onsubmit = function (event) {
+            event.preventDefault();
+            const newName = document.getElementById("newName").value;
+
+            // 生成新的 ID (假設 ID 是依次增加的)
+            const newId = itemsTable.rows.length + 1;
+
+            // 在表格中新增一行
+            const newRow = itemsTable.insertRow();
+            newRow.setAttribute('data-id', newId);
+            const cell1 = newRow.insertCell(0);
+            cell1.textContent = newId;
+            const cell2 = newRow.insertCell(1);
+            cell2.textContent = newName;
+            const cell3 = newRow.insertCell(2);
+            const actions = document.createElement("div");
+            actions.classList.add("operation-btns");
+            actions.innerHTML = `
+        <button class="button" onclick="editItem(this)">編輯</button>
+        <button class="button" onclick="deleteItem(this)">刪除</button>`;
+            cell3.appendChild(actions);
+
+            // 關閉主 Modal
+            mainModal.style.display = "none";
+        };
+
+        // 顯示編輯 Modal
+        function editItem(button) {
+            currentItem = button.closest("tr");
+            const itemId = currentItem.cells[0].textContent;
+            const itemName = currentItem.cells[1].textContent;
+
+            document.getElementById("editId").value = itemId;
+            document.getElementById("editName").value = itemName;
+
+            editModal.style.display = "block";
+        }
+
+        // 關閉編輯 Modal
+        cancelEditBtn.onclick = function () {
+            editModal.style.display = "none";
+        };
+
+        // 當編輯表單提交時
+        editForm.onsubmit = function (event) {
+            event.preventDefault();
+            const updatedName = document.getElementById("editName").value;
+            currentItem.cells[1].textContent = updatedName;
+            editModal.style.display = "none";
+        };
+
+        // 顯示刪除 Modal
+        function deleteItem(button) {
+            currentItem = button.closest("tr");
+            deleteModal.style.display = "block";
+        }
+
+        // 確認刪除
+        confirmDeleteBtn.onclick = function () {
+            currentItem.remove();
+            deleteModal.style.display = "none";
+        };
+
+        // 關閉刪除 Modal
+        cancelDeleteBtn.onclick = function () {
+            deleteModal.style.display = "none";
+        };
+
+        // 點擊 modal 以外區域關閉 modal
+        window.onclick = function (event) {
+            if (event.target == mainModal) {
+                mainModal.style.display = "none";
+            } else if (event.target == editModal) {
+                editModal.style.display = "none";
+            } else if (event.target == deleteModal) {
+                deleteModal.style.display = "none";
+            }
+        };
+    </script>
+
+</body>
+
+</html>
