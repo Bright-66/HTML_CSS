@@ -28,7 +28,7 @@ $data = [
 ];
 
 // dd($data);
-// 先佈局上述假資料(array), 再
+// 先佈局上述假資料(array), 再用boostrap + foreach ru; data轉table(下列Bs語法)
 
 
 ?>
