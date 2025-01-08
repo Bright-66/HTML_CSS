@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<body>
+    <script>
+        // Q１: salary 計算挑戰：
+        // 1.增加10%薪水
+        // 2.當我薪水超過30000,增加bonus 5000
+        // 3.總共要發多少錢
+
+        //原生作法1-1:
+        let salary = [10000, 20000, 30000, 40000, 50000];
+        let addSalary = [];
+        let bonusSalary = [];
+        let sum = 0;
+
+        salary.forEach(function (value) {
+            let tmp = parseInt(value * 1.1);
+            addSalary.push(tmp);
+        });
+
+        console.log('salary', salary);
+        console.log('addSalary', addSalary);
+
+        addSalary.forEach(function (value) {
+            let tmp = Number(value);
+            if (value > 30000) {
+                tmp = Number(value + 5000);
+            }
+            bonusSalary.push(tmp);
+        });
+        console.log('bonusSalary', bonusSalary);
+
+        bonusSalary.forEach(function (value) {
+            sum += value;
+        });
+        console.log('sum', sum);
+
+        //原生作法1-2:
+        let Sry = [10000, 20000, 30000, 40000, 50000];
+        let newSry = [];
+        let Total = 0;
+        Sry.forEach(function (value) {
+            console.log('Sry', value);
+            let newSry = parseInt(value * 1.1);
+            console.log('newSry', newSry)
+            if (newSry > 30000) {
+                newSry += 5000;
+                console.log('newSry', newSry)
+            }
+            Total += newSry;
+        });
+        console.log('Total', Total);
+
+        //Js作法:
+        let Sry1 = [10000, 20000, 30000, 40000, 50000];
+        let addSry1 = Sry1.map(function (value) {
+            return parseInt(value * 1.1)
+        });
+        console.log('addSry1', addSry1)
+        let bonusSry1 = addSry1.map(function (value) {
+            if (value > 30000) {
+                return value + 5000;
+            } else {
+                return value;
+            }
+        });
+        console.log('bonusSry1', bonusSry1);
+
+        let sum1 = bonusSry1.reduce(function (total, value) {
+            return total + value;
+        });
+
+        console.log('sum1', sum1);
+
+
+        // 下堂課 arrow function
+        let funObj = function (value, key) {
+            return value;
+        }
+
+        let funObj2 = value => value + 500;
+
+        // this ? window
+        // 箭頭函式 使用在"未明確的" , "=>"相當於function, "=>"的右邊放回傳值, 若有多個值則須用{}包起來!
+        // "this" 必須使用在 "前面有明確的物件"
+
+    </script>
+</body>
+
+</html>
