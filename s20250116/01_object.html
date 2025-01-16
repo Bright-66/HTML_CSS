@@ -46,7 +46,7 @@
             helloS2: () => {
                 console.log('this', this);
                 console.log('this.s2', this.s2);
-                // 使用箭頭函式 取代function時, 'this'無法被識別 所以須將改成"myObj" 才能! 
+                // 使用 箭頭函式 取代function時, 'this'無法被識別!! =>所以解法須改成"myObj" 才可執行! 或者不要用箭頭函式!
             },
             helloS2: () => {
                 console.log('myObj', myObj);
