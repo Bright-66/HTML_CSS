@@ -17,18 +17,23 @@
         }
 
         .box1 {
+            border: 5px solid black;
             margin: auto;
-            width: 100%;
-            height: 10vh;
-            border-radius: 30px;
-            background-color: transparent;
+            width: 80%;
+            height: 50vh;
+            background-color: rgba(0, 0, 0, 0.7);
+            border-radius: 10px;
+            box-shadow: 0 4px 20px rgba(0, 0, 0, 0.5);
+            transition: all 0.5s ease;
+        }
 
+        .box1:hover {
+            box-shadow: 0 8px 40px rgba(0, 0, 0, 0.7);
         }
 
         .box2 {
             margin: auto;
             width: 80%;
-            height: 0vh;
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -48,23 +53,20 @@
             width: 100%;
             height: 45vh;
             overflow: hidden;
-            margin-top: 200px;
-        }
-
-        #nowScore {
-            font-size: 60px;
-            font-weight: bolder;
-            color: gold;
         }
 
         button {
             border-radius: 50px;
+            padding: 15px 25px;
             transition: all 0.3s ease;
+            font-size: 20px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
         }
 
         button:hover {
             transform: scale(1.1);
-            background-color: #444;
+            background-color: #333;
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.5);
         }
 
         @keyframes countdown {
@@ -80,43 +82,57 @@
         #timer {
             animation: countdown 1s infinite alternate;
         }
+
+        /* 當前分數的光效 */
+        @keyframes scoreAnimation {
+            0% {
+                color: yellow;
+            }
+
+            100% {
+                color: red;
+            }
+        }
+
+        .score-update {
+            animation: scoreAnimation 1s infinite alternate;
+        }
     </style>
 </head>
 
 <body>
-    <!-- 
+
     <div class="container text-center mt-5">
-        <h2></h2>
+        <h2>投籃大賽</h2>
         <hr>
-    </div> -->
+    </div>
 
     <div class="container text-center mt-5">
         <div class="row">
             <div class="col-2">
+                <div class="img-box">
+                    <img src="./images/ball_left.png" class="img-fluid mt-3 rounded" alt="">
+                </div>
             </div>
             <div class="col-8">
                 <div class="box1">
                     <div class="container-box">
                         <div>
                             倒數計時<br>
-                            <span id="timer">30</span>
-                        </div>
-                        <div>
-                            分數<br>
-                            <span id="nowScore">168</span>
+                            <span id="timer">60</span>
                         </div>
                         <div>
                             最高分數<br>
                             <span id="highScore">999</span>
                         </div>
                     </div>
-                    <!-- <br><br><br>
+                    <br><br><br>
                     <p>
                         分數
                     </p>
                     <p>
                         <span id="nowScore">168</span>
-                    </p> -->
+                    </p>
                 </div>
             </div>
             <div class="col-2">
