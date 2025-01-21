@@ -4,25 +4,30 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>投籃大賽</title>
     <!-- link css 順序 1.bs 2.self -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/css/bootstrap.min.css"
         integrity="sha512-jnSuA4Ss2PkkikSOLtYs8BlYIeeIK1h99ty4YfvRPAlzr377vr3CXDb7sb7eEEBYjDtcYj+AjBH3FLv5uSJuXg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
     <style>
+        body {
+            background: url('./images/basketball_court.jpg') no-repeat center center fixed;
+            background-size: cover;
+            color: white;
+        }
+
         .box1 {
             border: 5px solid black;
             margin: auto;
             width: 80%;
             height: 50vh;
-            /* background-color: lightblue; */
+            background-color: rgba(0, 0, 0, 0.5);
+            border-radius: 10px;
         }
 
         .box2 {
             margin: auto;
             width: 80%;
-            /* height: 50vh; */
-            /* background-color: lightpink; */
             display: flex;
             justify-content: space-around;
             align-items: center;
@@ -30,10 +35,6 @@
 
         span {
             font-size: 40px;
-        }
-
-        img {
-            /* width: 100%; */
         }
 
         .container-box {
@@ -45,8 +46,31 @@
         .img-box {
             width: 100%;
             height: 45vh;
-            /* background-color: lightblue; */
             overflow: hidden;
+        }
+
+        button {
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        button:hover {
+            transform: scale(1.1);
+            background-color: #444;
+        }
+
+        @keyframes countdown {
+            from {
+                transform: scale(1);
+            }
+
+            to {
+                transform: scale(1.2);
+            }
+        }
+
+        #timer {
+            animation: countdown 1s infinite alternate;
         }
     </style>
 </head>
@@ -62,7 +86,7 @@
         <div class="row">
             <div class="col-2">
                 <div class="img-box">
-                    <img src="./images/ball_left.png" class="img-fluid mt-3 rounded" alt="" srcset="">
+                    <img src="./images/ball_left.png" class="img-fluid mt-3 rounded" alt="">
                 </div>
             </div>
             <div class="col-8">
@@ -87,8 +111,8 @@
                 </div>
             </div>
             <div class="col-2">
-                <div class="img-box ">
-                    <img src="./images/ball.png" class="img-fluid mt-3 rounded" alt="" srcset="">
+                <div class="img-box">
+                    <img src="./images/ball.png" class="img-fluid mt-3 rounded" alt="">
                 </div>
             </div>
         </div>
@@ -100,12 +124,14 @@
                 class="btn btn-dark btn-lg">開&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;始</button>
             <button type="button" id="shootBtn"
                 class="btn btn-dark btn-lg">投&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;球</button>
-            <button type="button" id="resetBtn" class="btn btn-danger btn-lg">重&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置
-
-            </button>
+            <button type="button" id="resetBtn"
+                class="btn btn-danger btn-lg">重&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;置</button>
         </div>
         <hr>
     </div>
+
+    <!-- 音效 -->
+    <audio id="shootSound" src="./sounds/shoot.mp3" preload="auto"></audio>
 
     <!-- js include 順序 1.bs 2.jq 3.self -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.3/js/bootstrap.bundle.min.js"
@@ -115,6 +141,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.7.1/jquery.min.js"
         integrity="sha512-v2CJ7UaYy4JwqLDIrZUI/4hqeoQieOmAZNXBeQyjo21dadnwR+8ZaIJVT8EE2iyI61OV8e6M8PP2/4hpQINQ/g=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
     <script>
         $(document).ready(function () {
 
@@ -125,16 +152,10 @@
             const startBtn = $('#startBtn');
             const shootBtn = $('#shootBtn');
             const resetBtn = $('#resetBtn');
+            const shootSound = $('#shootSound')[0]; // 音效
 
             let scoreVar = 0;
-
-            // 預設0 有最高 就抓最高分數
-            // localStorage.setItem('highScore', 0);
-            // let scoreHighVar = 0;
-            let scoreHighVar = localStorage.getItem('highScore');
-            console.log('scoreHighVar', scoreHighVar);
-
-
+            let scoreHighVar = localStorage.getItem('highScore') || 0;
             let timeVar = 60;
             let gameFlag = true;
             let tmpTime = 0;
@@ -167,12 +188,7 @@
                     } else {
                         timer.text(tmpTime);
                     }
-
                 }
-                function myStop() {
-                    clearInterval(myInterval);
-                }
-
             });
 
             shootBtn.click(function (e) {
@@ -180,9 +196,7 @@
                     console.log('gameFlag false', gameFlag);
                     return false;
                 }
-                // 兩分球 31-60
-                // 三分球 0-30
-                // feature
+                shootSound.play(); // 播放音效
                 console.log('tmpTime', tmpTime);
                 if (tmpTime <= 10) {
                     scoreVar += 3;
@@ -196,31 +210,33 @@
                     highScore.text(scoreVar);
                 }
 
-                nowScore.text(scoreVar);
+                animateScore(nowScore, scoreVar - 2, scoreVar); // 分數動畫
             });
 
             resetBtn.click(function (e) {
                 console.log('resetBtn ok');
-                // 倒數計時 60
-                // 分數 0
-
-                // 倒數計時 60
-                tmpTime = 0
+                tmpTime = timeVar;
                 timer.text(timeVar);
-                console.log('timeVar', timeVar);
-                console.log('tmpTime', tmpTime);
-                // gameFlag false false
                 gameFlag = true;
-                console.log('gameFlag', gameFlag);
-
-                // 分數 0
                 scoreVar = 0;
                 nowScore.text(scoreVar);
             });
 
+            function animateScore(target, start, end) {
+                let current = start;
+                let increment = end > start ? 1 : -1;
 
+                const interval = setInterval(function () {
+                    current += increment;
+                    target.text(current);
+                    if (current === end) {
+                        clearInterval(interval);
+                    }
+                }, 50);
+            }
         });
     </script>
+
 </body>
 
 </html>
