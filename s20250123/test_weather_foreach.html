@@ -53,7 +53,7 @@
             console.log('myTbody', myTbody);
 
             // 2.action
-            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-071?Authorization=${pwd}`;
+            let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-D0047-003?Authorization=${pwd}`;
             $.ajax({
                 type: "get",
                 url: url,
@@ -62,15 +62,15 @@
                 success: function (res) {
                     console.log('res', res);
 
-                    let data1 = res.records.Locations.Location[1].locationName;
-                    data1 = res.records.Locations.Location;
+                    let data = res.records.Locations[0].Location[1].LocationName;
+                    data = res.records.Locations.Location;
                     console.log('data', data);
 
                     $.each(data1, function (key, value) {
                         console.log('key', key);
-                        console.log('value', value.locationName);
+                        console.log('value', value.LocationName);
 
-                        let tmpLocationName = value.locationName;
+                        let tmpLocationName = value.LocationName;
                         let tmpLocationID = key;
 
                         // 1.地名
