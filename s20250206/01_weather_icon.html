@@ -54,8 +54,10 @@
             const myTbody = myTable.find('tbody');
             console.log('myTbody', myTbody);
 
-            // 2.action
+            // 2.action 
             let url = `https://opendata.cwa.gov.tw/api/v1/rest/datastore/F-C0032-001?Authorization=CWA-05FC7086-DC11-4444-90CC-AE7FF322E528`;
+            // (需有欲抓取的"url網址-json資料", 及驗證key碼,若有必要!)
+
             $.ajax({
                 type: "get",
                 url: url,
