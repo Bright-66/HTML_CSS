@@ -88,7 +88,7 @@
                     // 用變數替代 "day & night"
 
                     let tmpTypeTime1 = 'day';
-                    if (tmpStarText = '06') {
+                    if (tmpStartText == '06') {
                         tmpTypeTime1 = 'day';
                     } else {
                         tmpTypeTime1 = 'night';
@@ -112,7 +112,7 @@
                     // tmpStarText 06 day
                     // tmpEndText 18 night
                     let tmpTypeTime2 = 'day';
-                    if (tmpStarText = '06') {
+                    if (tmpStartText == '06') {
                         tmpTypeTime2 = 'day';
                     } else {
                         tmpTypeTime2 = 'night';
@@ -138,7 +138,7 @@
 
                     let tmpTypeTime3 = 'day';
 
-                    if (tmpStarText = '06') {
+                    if (tmpStartText == '06') {
                         tmpTypeTime3 = 'day';
                     } else {
                         tmpTypeTime3 = 'night';
@@ -193,8 +193,8 @@
                                 <td>${tmpLocationID + 1}</td>
                                 <td>${tmpLocationName}</td>
                                 <td>${tmpMinTtime0} - ${tmpMaxTtime0} 度c <img src="./${tmpTypeTime1}/${tmpWx0}.svg" alt=""></td>
-                                <td>${tmpMinTtime1} - ${tmpMaxTtime1} 度c <img src="./${tmpTypeTime2}/${tmpWx0}.svg" alt=""></td>
-                                <td>${tmpMinTtime2} - ${tmpMaxTtime2} 度c <img src="./${tmpTypeTime3}/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime1} - ${tmpMaxTtime1} 度c <img src="./${tmpTypeTime2}/${tmpWx1}.svg" alt=""></td>
+                                <td>${tmpMinTtime2} - ${tmpMaxTtime2} 度c <img src="./${tmpTypeTime3}/${tmpWx2}.svg" alt=""></td>
                             </tr>
                         `;
                         // 用變數替代 "day&night"及"icon"資料夾
