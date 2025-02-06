@@ -83,6 +83,17 @@
                     // console.log('tmpStartText', tmpStartText);
                     // console.log('tmpEndText', tmpEndText);
 
+                    // tmpStarText 06 day
+                    // tmpEndText 18 night
+                    // 用變數替代 "day & night"
+
+                    let tmpTypeTime1 = 'day';
+                    if (tmpStarText = '06') {
+                        tmpTypeTime1 = 'day';
+                    } else {
+                        tmpTypeTime1 = 'night';
+                    }
+
                     let textTime1 = `${tmpDate} [${tmpStartText} - ${tmpEndText}]`;
                     // console.log('textTime1', textTime1);
                     thTime1.text(textTime1);
@@ -98,6 +109,15 @@
                     // console.log('tmpStartText', tmpStartText);
                     // console.log('tmpEndText', tmpEndText);
 
+                    // tmpStarText 06 day
+                    // tmpEndText 18 night
+                    let tmpTypeTime2 = 'day';
+                    if (tmpStarText = '06') {
+                        tmpTypeTime2 = 'day';
+                    } else {
+                        tmpTypeTime2 = 'night';
+                    }
+
                     let textTime2 = `${tmpDate} [${tmpStartText} - ${tmpEndText}]`;
                     // console.log('textTime2', textTime2);
                     thTime2.text(textTime2);
@@ -112,6 +132,17 @@
                     // console.log('tmpDate', tmpDate);
                     // console.log('tmpStartText', tmpStartText);
                     // console.log('tmpEndText', tmpEndText);
+
+                    // tmpStarText 06 day
+                    // tmpEndText 18 night
+
+                    let tmpTypeTime3 = 'day';
+
+                    if (tmpStarText = '06') {
+                        tmpTypeTime3 = 'day';
+                    } else {
+                        tmpTypeTime3 = 'night';
+                    }
 
                     let textTime3 = `${tmpDate} [${tmpStartText} - ${tmpEndText}]`;
                     // console.log('textTime3', textTime3);
@@ -161,12 +192,12 @@
                             `<tr>
                                 <td>${tmpLocationID + 1}</td>
                                 <td>${tmpLocationName}</td>
-                                <td>${tmpMinTtime0} - ${tmpMaxTtime0} 度c <img src="./day/${tmpWx0}.svg" alt=""></td>
-                                <td>${tmpMinTtime1} - ${tmpMaxTtime1} 度c <img src="./day/${tmpWx0}.svg" alt=""></td>
-                                <td>${tmpMinTtime2} - ${tmpMaxTtime2} 度c <img src="./day/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime0} - ${tmpMaxTtime0} 度c <img src="./${tmpTypeTime1}/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime1} - ${tmpMaxTtime1} 度c <img src="./${tmpTypeTime2}/${tmpWx0}.svg" alt=""></td>
+                                <td>${tmpMinTtime2} - ${tmpMaxTtime2} 度c <img src="./${tmpTypeTime3}/${tmpWx0}.svg" alt=""></td>
                             </tr>
                         `;
-
+                        // 用變數替代 "day&night"及"icon"資料夾
                         $(myTbody).append(temText);
 
                     });
